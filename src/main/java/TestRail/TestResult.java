@@ -25,12 +25,12 @@ public class TestResult {
         TestCase testCase = new TestCase();
         TestSuite testSuite = new TestSuite();
         TestRun testRun=new TestRun();
-        for (String testSuiteName : testSuite.getAllTestSuiteName(Constants.TEST_RAIL_PROJECT_NAME.value)) {
+        for (String testSuiteName : jsonReportParser.getAllURIInCucumberJson()) {
+            System.out.println("TestSuiteName------------"+testSuiteName);
             String testRunInstance=testRun.createTestRun(Constants.TEST_RAIL_PROJECT_NAME.value,testSuiteName);
             List<String> listOfScenariosOfAFeature = jsonReportParser.totalScenarioInEveryFeature(testSuiteName);
             for (String scenario : listOfScenariosOfAFeature) {
                 MultiValuedMap<String, String> multiMap = jsonReportParser.getAutomationExecutionStatusOfAScenarioOfAFeatureFileForTestRail(testSuiteName, scenario);
-
                 for (Map.Entry<String, String> entry : multiMap.entries()) {
                     automationStatus = entry.getValue();
                 }
@@ -48,7 +48,7 @@ public class TestResult {
                 }
                 Map data = new HashMap();
                 data.put("status_id", statusToPopulateinTestRail);
-                data.put("comment", "CYB_TRIAL_AUTOMATION_TEST_Result");
+                data.put("comment", "TRIAL_AUTOMATION_TEST_Result");
                 data.put("version", "");
                 data.put("elapsed", "");
                 data.put("defects", "");

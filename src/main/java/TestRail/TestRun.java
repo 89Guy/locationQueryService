@@ -34,7 +34,7 @@ public class TestRun {
         Map data = new HashMap();
         data.put("suite_id", testSuite.getTestSuiteId(projectName, suiteName));
         String testRun = "";
-        testRun = "CYB_TRIAL_AUTOMATION_TEST_RUN" + "-"+suiteName +"-------" +LocalDateTime.now();
+        testRun = "TRIAL_AUTOMATION_TEST_RUN" + "-"+suiteName +"-------" +LocalDateTime.now();
         data.put("name", testRun);
         System.out.println("testRunName-" + testRun);
         ThreadContextForScenarios.setScenarioContext("name", testRun);

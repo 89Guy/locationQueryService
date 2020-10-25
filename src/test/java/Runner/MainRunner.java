@@ -17,9 +17,9 @@ import org.testng.annotations.AfterSuite;
 
 public class MainRunner extends AbstractTestNGCucumberTests {
 
-    /*@AfterSuite
+    @AfterSuite
     public void populateTestResults() throws Exception {
        TestResult testResult=new TestResult();
        testResult.populateTestResult();
-    }*/
+    }
 }

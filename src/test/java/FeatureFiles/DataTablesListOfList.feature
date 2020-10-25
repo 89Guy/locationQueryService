@@ -1,6 +1,6 @@
 Feature: Fill inputform using DataTableListOfList
 
-  Scenario: Reading data from CSV for user01|please search for value in double quotes|csv fileName and bean name should be same
+  Scenario: Reading data from CSV for user01|please search for value in double quotes|csv fileName and bean name should be same DataTablelistOfList
 
     Given input form to fill up the Data
     When user fillsup the form with all required information for user using DataTablelistOfList

@@ -13,6 +13,7 @@ public class JsonReportParser {
     private String id;
     private String keyword;
     private String uri;
+    private List<Tags>tags;
 
     public String getLine() {
         return line;
@@ -70,6 +71,14 @@ public class JsonReportParser {
         this.uri = uri;
     }
 
+    public List<Tags> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tags> tags) {
+        this.tags = tags;
+    }
+
     public static List<JsonReportParser> getCucumberReportData() {
         CucumberJsonReportParser cucumberJsonReportParser = new CucumberJsonReportParser();
         List<JsonReportParser> jsonReportParserList = cucumberJsonReportParser.readCucumberJsonReport(JsonReportParser.class);
@@ -84,12 +93,12 @@ public class JsonReportParser {
         String[] featureName=null;
         //outerloop:
         for (JsonReportParser parser : parsers) {
-            if(parser.getUri().contains("FeatureFiles/")) {
-                 featureNamePath = parser.getUri().split("FeatureFiles/");
-                 featureName = featureNamePath[1].split(".feature");
+            if(parser.getUri().contains("featureFiles/")) {
+                featureNamePath = parser.getUri().split("featureFiles/");
+                featureName = featureNamePath[1].split(".feature");
             }
             else{
-                 featureName = parser.getUri().split(".feature");
+                featureName = parser.getUri().split(".feature");
             }
             for (Elements element : parser.getElements()) {
                 List<String> statusOfEveryStep = new ArrayList<>();
@@ -109,6 +118,10 @@ public class JsonReportParser {
                         executionStatus = "Failed";
                         multiValueMapOfScenarioAndStatus.put(scenarioName, executionStatus);
                     }
+                    else{
+                        executionStatus="Failed";
+                        multiValueMapOfScenarioAndStatus.put(scenarioName, executionStatus);
+                    }
                 }
                 //break outerloop;
             }
@@ -121,31 +134,49 @@ public class JsonReportParser {
         Map<String,List<String>> map=new LinkedHashMap<>();
         List<JsonReportParser> parsers = getCucumberReportData();
         List<String>scenarios=new LinkedList<>();
-        List<String>totalFeatureFiles=new ArrayList<>();
+        List<String>totalfeatureFiles=new ArrayList<>();
         String[] featureNamePath=null;
         String[] featureName=null;
 
         for (int i=0;i<parsers.size();i++) {
-            if(parsers.get(i).getUri().contains("FeatureFiles/")) {
-                featureNamePath = parsers.get(i).getUri().split("FeatureFiles/");
+            if(parsers.get(i).getUri().contains("featureFiles/")) {
+                featureNamePath = parsers.get(i).getUri().split("featureFiles/");
                 featureName = featureNamePath[1].split(".feature");
             }
             else{
                 featureName = parsers.get(i).getUri().split(".feature");
             }
             if(featureName[0].equals(featureFileName)){
-               for(int j=0;j<parsers.get(i).getElements().size();j++){
-                   scenarios.add(parsers.get(i).getElements().get(j).getName());
-               }
+                for(int j=0;j<parsers.get(i).getElements().size();j++){
+                    scenarios.add(parsers.get(i).getElements().get(j).getName());
+                }
             }
         }
         return scenarios;
     }
 
+    public List<String>getAllURIInCucumberJson() {
+        List<JsonReportParser> parsers = getCucumberReportData();
+        String[] featureNamePath = null;
+        String[] featureName = null;
+        List<String>listOfURI=new LinkedList<>();
+        for (JsonReportParser parser : parsers) {
+            if (parser.getUri().contains("featureFiles/")) {
+                featureNamePath = parser.getUri().split("featureFiles/");
+                featureName = featureNamePath[1].split(".feature");
+                listOfURI.add(featureName[0]);
+            } else {
+                featureName = parser.getUri().split(".feature");
+                listOfURI.add(featureName[0]);
+            }
+        }
+        return listOfURI;
+    }
+
     public static void main(String[] args) {
         JsonReportParser jsonReportParser=new JsonReportParser();
-       List<String>list= jsonReportParser.totalScenarioInEveryFeature("SugarCRM_exampleTable");
-       System.out.println(list);
+        List<String>list= jsonReportParser.totalScenarioInEveryFeature("SugarCRM_exampleTable");
+        System.out.println(list);
     }
 
 }

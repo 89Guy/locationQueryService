@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3997d809-f125-421c-9781-f305d1df8f62" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CucumberJsonReportStructure/JsonReportParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/CucumberJsonReportStructure/JsonReportParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Enums/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Enums/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TestRail/TestResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TestRail/TestResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/TestRail/TestRun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/TestRail/TestRun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/TestRail.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TestRail.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/FeatureFiles/BackGround.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/FeatureFiles/DataTablesListOfList.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/FeatureFiles/DataTablesListOfList.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/FeatureFiles/DataTablesListOfMap.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/FeatureFiles/DataTablesListOfMap.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/FeatureFiles/ExampleTable.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/FeatureFiles/ExampleTable.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Runner/MainRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Runner/MainRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

@@ -2,9 +2,13 @@ package Pages;
 
 import Context.ThreadContextForScenarios;
 import Enums.Constants;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class BasePage {
@@ -19,6 +23,22 @@ public class BasePage {
             ThreadContextForScenarios.getInstance();
             ThreadContextForScenarios.setScenarioContext("driver",driver);
             driver.get(Constants.CSVJSONURL.value);
+        }
+        else{
+            WebDriverManager.firefoxdriver().setup();
+            DesiredCapabilities desiredCapabilities=new DesiredCapabilities();
+            desiredCapabilities.setCapability("browserName","firefox");
+            try {
+                driver=new RemoteWebDriver(new URL("http://13.233.15.188:4444/wd/hub"),desiredCapabilities);
+                this.driver.manage().window().maximize();
+                this.driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+                ThreadContextForScenarios.getInstance();
+                ThreadContextForScenarios.setScenarioContext("driver",driver);
+                driver.get(Constants.CSVJSONURL.value);
+            }
+            catch(Exception e){
+                System.out.println("Issue with instantiating driver on AWS Unix system");
+            }
         }
         return driver;
     }

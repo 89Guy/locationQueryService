@@ -29,7 +29,7 @@ public class BasePage {
             DesiredCapabilities desiredCapabilities=new DesiredCapabilities();
             desiredCapabilities.setCapability("browserName","firefox");
             try {
-                driver=new RemoteWebDriver(new URL("http://13.233.15.188:4444/wd/hub"),desiredCapabilities);
+                driver=new RemoteWebDriver(new URL("http://13.233.38.43:4444/wd/hub"),desiredCapabilities);
                 this.driver.manage().window().maximize();
                 this.driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
                 ThreadContextForScenarios.getInstance();

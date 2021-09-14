@@ -5,5 +5,5 @@ Feature: Fill inputform using DataTableListOfMap
     Given input form to fill up the Data
     When user fillsup the form with all required information for user using DataTablelistOfMap
       |uniqueValue|firstName|lastName|email|phone|address|city|state|zipCode|websiteOrDomainName|hostingYes|projectDescription|
-      |user01|John|Morrison|john.morrison@yahoo.com|1234567890|earth|Alaska|Alaska|112233|johnmorrison.com||Demo              |
+      |user01|John|Morrison|john.morrison@yahoo.com|1234567890|PlanetEarth|Alaska|Alaska|66732|johnmorrison.com||DemoPOC654              |
     Then user should be registered

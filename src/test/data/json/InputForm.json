@@ -5,13 +5,13 @@
     "lastName": "Fernandes",
     "email": "albert.fernandes@yahoo.com",
     "phone": "9999999990",
-    "address": "mars",
+    "address": "PlanetMars",
     "city": "Kansas",
     "state": "Kansas",
-    "zipCode": "009911",
+    "zipCode": "66732",
     "websiteOrDomainName": "albertFernandes.com",
     "hostingYes": "",
-    "projectDescription": "demo"
+    "projectDescription": "demoPOC123"
   },
   {
     "uniqueValue": "user02",
@@ -19,12 +19,12 @@
     "lastName": "Fernandes",
     "email": "dave.fernandes@yahoo.com",
     "phone": "9999999990",
-    "address": "mars",
+    "address": "PlanetMars",
     "city": "Kansas",
     "state": "Kansas",
-    "zipCode": "009911",
+    "zipCode": "66732",
     "websiteOrDomainName": "daveFernandes.com",
     "hostingYes": "",
-    "projectDescription": "demo"
+    "projectDescription": "demoPOC234"
   }
 ]

@@ -5,9 +5,8 @@ import cucumber.api.CucumberOptions;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 import org.testng.annotations.AfterSuite;
 
-//@RunWith(CucumberT.class)
 @CucumberOptions(
-        features = {"src/test/java/FeatureFiles/"},
+        features = {"src/test/java/FeatureFiles"},
         glue = {"StepDefinition"},
         monochrome = true,
         dryRun = false,
@@ -17,9 +16,9 @@ import org.testng.annotations.AfterSuite;
 
 public class MainRunner extends AbstractTestNGCucumberTests {
 
-    @AfterSuite
+    /*@AfterSuite
     public void populateTestResults() throws Exception {
         TestResult testResult = new TestResult();
         testResult.populateTestResult();
-    }
+    }*/
 }

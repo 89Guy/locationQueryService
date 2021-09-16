@@ -34,8 +34,6 @@ public class BasePage {
             chromeOptions.addArguments("no-sandbox");
             chromeOptions.addArguments("--disable-extensions");
             chromeOptions.addArguments("--headless");
-        //    DesiredCapabilities desiredCapabilities=new DesiredCapabilities();
-          //  desiredCapabilities.setCapability("browserName","chrome");
             try {
                 this.driver = new ChromeDriver(chromeOptions);
                 this.driver.manage().window().maximize();

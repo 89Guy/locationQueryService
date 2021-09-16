@@ -28,7 +28,7 @@ public class BasePage {
         }
         else{
             System.out.println("!Windows");
-            WebDriverManager.chromedriver().driverVersion("92.0.4515.107").setup();
+            WebDriverManager.chromedriver().setup();
         //    DesiredCapabilities desiredCapabilities=new DesiredCapabilities();
           //  desiredCapabilities.setCapability("browserName","chrome");
             try {
@@ -41,6 +41,7 @@ public class BasePage {
             }
             catch(Exception e){
                 System.out.println("Issue with instantiating driver on AWS Unix system");
+                e.printStackTrace();
             }
         }
         return driver;

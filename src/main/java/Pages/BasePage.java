@@ -29,12 +29,12 @@ public class BasePage {
         else{
             System.out.println("!Windows");
             WebDriverManager.chromedriver().setup();
-            DesiredCapabilities desiredCapabilities=new DesiredCapabilities();
-            desiredCapabilities.setCapability("browserName","chrome");
+        //    DesiredCapabilities desiredCapabilities=new DesiredCapabilities();
+          //  desiredCapabilities.setCapability("browserName","chrome");
             try {
                 this.driver = new ChromeDriver();;
                 this.driver.manage().window().maximize();
-               // this.driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+                this.driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
                 ThreadContextForScenarios.getInstance();
                 ThreadContextForScenarios.setScenarioContext("driver",driver);
                 driver.get(Constants.CSVJSONURL.value);

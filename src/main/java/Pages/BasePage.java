@@ -18,6 +18,7 @@ public class BasePage {
         if (System.getProperty("os.name").contains("Windows")) {
           //  System.setProperty("webdriver.chrome.driver", "C:\\Users\\work\\chromedriver.exe");
             WebDriverManager.chromedriver().setup();
+            System.out.println("Windows");
             this.driver = new ChromeDriver();
             this.driver.manage().window().maximize();
             this.driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
@@ -26,6 +27,7 @@ public class BasePage {
             driver.get(Constants.CSVJSONURL.value);
         }
         else{
+            System.out.println("Unix");
             WebDriverManager.firefoxdriver().setup();
             DesiredCapabilities desiredCapabilities=new DesiredCapabilities();
             desiredCapabilities.setCapability("browserName","firefox");

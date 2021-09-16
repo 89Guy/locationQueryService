@@ -6,10 +6,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.remote.RemoteWebDriver;
 
-import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class BasePage {
@@ -17,7 +14,6 @@ public class BasePage {
 
     public WebDriver initDriver() {
         if (System.getProperty("os.name").contains("Windows")) {
-          //  System.setProperty("webdriver.chrome.driver", "C:\\Users\\work\\chromedriver.exe");
             WebDriverManager.chromedriver().setup();
             System.out.println("Windows");
             this.driver = new ChromeDriver();
@@ -28,7 +24,7 @@ public class BasePage {
             driver.get(Constants.CSVJSONURL.value);
         }
         else{
-            System.out.println("!Windows");
+            System.out.println("UNIX OS");
             WebDriverManager.chromedriver().setup();
             ChromeOptions chromeOptions=new ChromeOptions();
             chromeOptions.addArguments("no-sandbox");

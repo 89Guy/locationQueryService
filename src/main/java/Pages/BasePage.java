@@ -34,9 +34,9 @@ public class BasePage {
             try {
                 this.driver = new ChromeDriver();;
                 this.driver.manage().window().maximize();
-                this.driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
-                //ThreadContextForScenarios.getInstance();
-                //ThreadContextForScenarios.setScenarioContext("driver",driver);
+               // this.driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+                ThreadContextForScenarios.getInstance();
+                ThreadContextForScenarios.setScenarioContext("driver",driver);
                 driver.get(Constants.CSVJSONURL.value);
             }
             catch(Exception e){

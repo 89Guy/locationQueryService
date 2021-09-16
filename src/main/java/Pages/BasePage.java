@@ -27,12 +27,12 @@ public class BasePage {
             driver.get(Constants.CSVJSONURL.value);
         }
         else{
-            System.out.println("Unix");
-            WebDriverManager.firefoxdriver().setup();
+            System.out.println("!Windows");
+            WebDriverManager.chromedriver().setup();
             DesiredCapabilities desiredCapabilities=new DesiredCapabilities();
-            desiredCapabilities.setCapability("browserName","firefox");
+            desiredCapabilities.setCapability("browserName","chrome");
             try {
-                driver=new RemoteWebDriver(new URL("http://hostname:4444/wd/hub"),desiredCapabilities);
+                this.driver = new ChromeDriver();;
                 this.driver.manage().window().maximize();
                 this.driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
                 ThreadContextForScenarios.getInstance();

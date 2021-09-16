@@ -5,6 +5,7 @@ import Enums.Constants;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -29,10 +30,14 @@ public class BasePage {
         else{
             System.out.println("!Windows");
             WebDriverManager.chromedriver().setup();
+            ChromeOptions chromeOptions=new ChromeOptions();
+            chromeOptions.addArguments("no-sandbox");
+            chromeOptions.addArguments("--disable-extensions");
+            chromeOptions.addArguments("--headless");
         //    DesiredCapabilities desiredCapabilities=new DesiredCapabilities();
           //  desiredCapabilities.setCapability("browserName","chrome");
             try {
-                this.driver = new ChromeDriver();;
+                this.driver = new ChromeDriver(chromeOptions);
                 this.driver.manage().window().maximize();
                 this.driver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
                 ThreadContextForScenarios.getInstance();

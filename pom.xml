@@ -7,7 +7,7 @@
     <groupId>com.demo.cucumberFrameWork</groupId>
     <artifactId>frameworkCucumber</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>CucumberFramework</name>
+    <name>WeatherGithub</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -221,6 +221,19 @@
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>4.2.2</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>4.4.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>4.4.0</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>

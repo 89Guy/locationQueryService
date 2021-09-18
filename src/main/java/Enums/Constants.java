@@ -2,10 +2,7 @@ package Enums;
 
 public enum Constants {
 
-    TEST_RAIL_URL(""),
-    TEST_RAIL_PROJECT_NAME("Automation"),
-    TEST_RAIL_SUITE_NAME(""),
-    CSVJSONURL("https://www.seleniumeasy.com/test/input-form-demo.html");
+    API_URL("https://www.metaweather.com");
 
     public String value;
 

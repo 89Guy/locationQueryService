@@ -7,10 +7,15 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.RestAssured;
+import io.restassured.config.SSLConfig;
+import io.restassured.http.ContentType;
 import io.restassured.http.Method;
+import io.restassured.path.xml.XmlPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.testng.Assert;
+
+import static io.restassured.RestAssured.given;
 
 public class APISteps {
 
@@ -19,26 +24,61 @@ public class APISteps {
 
     }
 
-    @Given("^foreCast Weather API$")
+    @Given("^Location Query Service API$")
     public void forecastWeatherAPI(){
-        System.out.println("*********Forecast Weather API**************");
+        System.out.println("*********Location Query Service API**************");
     }
 
-    @When("^user sends the request$")
+    @When("^user sends the request with valid MSDIN$")
     public void userSendsRequest(){
-        RestAssured.baseURI = Constants.API_URL.value;
-        RequestSpecification httpRequest = RestAssured.given();
-        Response response = httpRequest.request(Method.GET, "/api/");
-        String responseBody = response.getBody().asString();
-      //  System.out.println("Response Body is =>  " + responseBody);
-        ThreadContextForScenarios.setScenarioContext("Response",response);
+        RestAssured.baseURI =Constants.API_URL.value;
+        Response response = given()
+                .relaxedHTTPSValidation()
+               . contentType(ContentType.XML)
+                .accept(ContentType.XML)
+                .body(Constants.REQUEST_BODY.value)
+                .when()
+                .post("/LocationQueryService");
+        System.out.println("Post Response :" + response.asString());
+        XmlPath xmlPath = new XmlPath(response.asString());
+        System.out.println("Status Code :" + response.getStatusCode());
+    }
+
+    @When("^user sends the request with invalid MSDIN$")
+    public void userSendsRequestWithInvalidMSDIN(){
+        RestAssured.baseURI =Constants.API_URL.value;
+        Response response = given()
+                .relaxedHTTPSValidation()
+                . contentType(ContentType.XML)
+                .accept(ContentType.XML)
+                .body(Constants.REQUEST_BODY_INVALID_MSDIN.value)
+                .when()
+                .post("/LocationQueryService");
+        System.out.println("Post Response :" + response.asString());
+        XmlPath xmlPath = new XmlPath(response.asString());
+        System.out.println("Status Code :" + response.getStatusCode());
+    }
+
+    @When("^user sends the request with invalid client$")
+    public void userSendsRequestWithInvalidClient(){
+        RestAssured.baseURI =Constants.API_URL.value;
+        Response response = given()
+                .relaxedHTTPSValidation()
+                . contentType(ContentType.XML)
+                .accept(ContentType.XML)
+                .body(Constants.REQUEST_BODY_INVALID_CLIENT.value)
+                .when()
+                .post("/LocationQueryService");
+        System.out.println("Post Response :" + response.asString());
+        XmlPath xmlPath = new XmlPath(response.asString());
+        System.out.println("Status Code :" + response.getStatusCode());
     }
 
     @Then("^user should get a valid response with statuscode \"([^\"]*)\"$")
     public void validateResponse(String statusCode){
      Response response= (Response) ThreadContextForScenarios.getScenarioContext("Response");
      System.out.println(response.getStatusCode());
-     Assert.assertEquals(Integer.parseInt(statusCode) /*actual value*/, response.getStatusCode() /*expected value*/, "Correct status code returned");
+     Assert.assertEquals(Integer.parseInt(statusCode) , response.getStatusCode(), "Correct status code returned");
     }
 
     @Given("^user search a location by Name$")
@@ -57,7 +97,7 @@ public class APISteps {
     public void validateStatusCode(String statusCode){
         Response response= (Response) ThreadContextForScenarios.getScenarioContext("Response");
         System.out.println(response.getStatusCode());
-        Assert.assertEquals(Integer.parseInt(statusCode) /*actual value*/, response.getStatusCode() /*expected value*/, "Correct status code returned");
+        Assert.assertEquals(Integer.parseInt(statusCode) , response.getStatusCode() , "Correct status code returned");
     }
 
     @And("^user should validate the response having location \"([^\"]*)\"$")
